@@ -8,6 +8,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -15,12 +16,12 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => CreatorsProvider()),
       ],
       child: MaterialApp(
-        title: 'Flutter Demo',
+        title: 'Creator Donation App',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.indigo,
       ),
-        home: AllCreatorsScreen(),
+        home: const AllCreatorsScreen(),
       ),
     );
   }
