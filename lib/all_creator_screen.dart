@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:get/get.dart';
 import 'package:duck_cart/creator.dart';
 import 'package:duck_cart/util.dart';
 
@@ -7,7 +7,7 @@ class AllCreatorsScreen extends StatelessWidget {
   const AllCreatorsScreen({super.key});
   @override
   Widget build(BuildContext context) {
-    final creatorsProvider = Provider.of<CreatorsProvider>(context);
+    final creatorsProvider = Get.put(CreatorsProvider());
     final creators = creatorsProvider.creators;
 
     return Scaffold(
