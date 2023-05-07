@@ -1,3 +1,4 @@
+import 'package:duck_cart/all_creator_screen.dart';
 import 'package:flutter/material.dart';
 
 class CreaterDonationPage extends StatefulWidget {
@@ -22,6 +23,7 @@ class CreaterDonationPageBuider extends State<CreaterDonationPage> {
       body: ListView(
         children: [
           Center(
+            widthFactor: 12,
             child: Padding(
               padding: const EdgeInsets.all(8),
               child: Text(
@@ -135,7 +137,13 @@ class _CurrencyInputState extends State<CurrencyInput> {
               width: 200,
               height: 40,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const AllCreatorsScreen()),
+              );
+                },
                 child: Text('Support $_displayCurrency $_displayAmount'),
               ),
             ),

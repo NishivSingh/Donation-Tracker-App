@@ -5,7 +5,13 @@ class Profile extends StatefulWidget {
   final String name;
   final String profession;
   final String tagline;
-  const Profile({super.key, required this.name, required this.profession,required this.tagline});
+  final String profileImageUrl;
+  const Profile(
+      {super.key,
+      required this.name,
+      required this.profession,
+      required this.tagline,
+      required this.profileImageUrl});
   @override
   ProfileBuilder createState() => ProfileBuilder();
 }
@@ -17,20 +23,32 @@ class ProfileBuilder extends State<Profile> {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        GestureDetector(
-          onDoubleTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => CreaterDonationPage(creatorName: widget.name, creatorTagline: widget.tagline)),
-            );
-          },
-          child: Container(
-            width: 160,
-            height: 120,
-            decoration: const BoxDecoration(
-                color: Colors.yellow,
-                borderRadius: BorderRadius.all(Radius.circular(10))),
+        MouseRegion(
+          cursor: SystemMouseCursors.click,
+          child: GestureDetector(
+            
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => CreaterDonationPage(
+                        creatorName: widget.name,
+                        creatorTagline: widget.tagline)),
+              );
+            },
+            child: Container(
+              width: 160,
+              height: 120,
+              decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(10))),
+              child: ClipRRect(
+                borderRadius: const BorderRadius.all(Radius.circular(10)),
+                child: Image.network(
+                  widget.profileImageUrl,
+                  fit: BoxFit.fill,
+                ),
+              ),
+            ),
           ),
         ),
         const SizedBox(height: 5),
@@ -39,7 +57,7 @@ class ProfileBuilder extends State<Profile> {
           padding: const EdgeInsets.only(left: 8),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children:[
+            children: [
               Text(
                 widget.name,
                 style: const TextStyle(
